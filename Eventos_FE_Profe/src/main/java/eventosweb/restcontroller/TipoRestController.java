@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import eventosweb.modelo.dao.PerfilDao;
-import eventosweb.modelo.entities.Perfil;
+import eventosweb.modelo.dao.TipoDao;
+import eventosweb.modelo.entities.Tipo;
 
 @RestController
 @CrossOrigin(origins = "*")
@@ -18,14 +18,14 @@ import eventosweb.modelo.entities.Perfil;
 public class TipoRestController {
 
 	@Autowired
-	private PerfilDao pdao;
+	private TipoDao pdao;
 	
 	@GetMapping("/todos")
-	public List<Perfil> todos(){
+	public List<Tipo> todos(){
 		return pdao.todos();
 	}
 	@GetMapping("/uno/{idTipo}")
-	public Perfil uno(@PathVariable Integer idTipo){
+	public Tipo uno(@PathVariable Integer idTipo){
 		return pdao.buscarUno(idTipo);
 	}
 	
