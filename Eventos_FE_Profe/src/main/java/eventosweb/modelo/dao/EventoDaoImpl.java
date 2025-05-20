@@ -50,6 +50,16 @@ public class EventoDaoImpl implements EventoDao{
 		}
 	}
 
+	@Override
+	public Evento insertOne(Evento evento) {
+		try {
+			return edao.save(evento);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+
 	
 	
 }
