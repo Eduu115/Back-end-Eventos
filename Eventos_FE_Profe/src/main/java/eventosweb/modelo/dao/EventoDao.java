@@ -9,4 +9,5 @@ public interface EventoDao {
 	List<Evento> todos();
 	List<Evento> porDestacado(String referenciaDestacado);
 	List<Evento> porEstado(String referenciaEstado);
+	int deleteById(Integer id);
 }

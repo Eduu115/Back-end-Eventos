@@ -36,6 +36,20 @@ public class EventoDaoImpl implements EventoDao{
 		return edao.findByEstado(EstadoEvento.valueOf(referenciaEstado));
 	}
 
+	@Override
+	public int deleteById(Integer id) {
+		try {
+			if(edao.findById(id).orElse(null)==null)
+				return 0; // no existe o es nulo
+			
+			edao.deleteById(id);
+			return 1; // todo va bien
+
+		} catch (Exception e) {
+			return -1; //excepcion no se persiste
+		}
+	}
+
 	
 	
 }
