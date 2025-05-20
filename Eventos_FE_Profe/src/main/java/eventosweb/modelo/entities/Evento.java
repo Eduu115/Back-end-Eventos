@@ -58,13 +58,16 @@ public class Evento implements Serializable{
 	@Temporal(TemporalType.DATE)
 	private LocalDate fechaAlta;
 	
+	@Column(name="RUTA_IMAGEN")
+	private String rutaImagen;
+	
 	public Evento() {
 		// TODO Auto-generated constructor stub
 	}
 
 	public Evento(Integer idEvento, String nombre, String descripcion, LocalDate fechaInicio,
 			UnidadDuracion unidadDuracion, Integer duracion, String direccion, Integer aforoMaximo, EstadoEvento estado,
-			Destacado destacado, Double precio, Tipo tipo, LocalDate fechaAlta) {
+			Destacado destacado, Double precio, Tipo tipo, LocalDate fechaAlta, String rutaImagen) {
 		super();
 		this.idEvento = idEvento;
 		this.nombre = nombre;
@@ -79,6 +82,7 @@ public class Evento implements Serializable{
 		this.precio = precio;
 		this.tipo = tipo;
 		this.fechaAlta = fechaAlta;
+		this.rutaImagen = rutaImagen;
 	}
 
 	public Integer getIdEvento() {
@@ -185,12 +189,20 @@ public class Evento implements Serializable{
 		this.fechaAlta = fechaAlta;
 	}
 
+	public String getRutaImagen() {
+		return rutaImagen;
+	}
+
+	public void setRutaImagen(String rutaImagen) {
+		this.rutaImagen = rutaImagen;
+	}
+
 	@Override
 	public String toString() {
 		return "Evento [idEvento=" + idEvento + ", nombre=" + nombre + ", descripcion=" + descripcion + ", fechaInicio="
 				+ fechaInicio + ", unidadDuracion=" + unidadDuracion + ", duracion=" + duracion + ", direccion="
 				+ direccion + ", aforoMaximo=" + aforoMaximo + ", estado=" + estado + ", destacado=" + destacado
-				+ ", precio=" + precio + ", tipo=" + tipo + ", fechaAlta=" + fechaAlta + "]";
+				+ ", precio=" + precio + ", tipo=" + tipo + ", fechaAlta=" + fechaAlta + ", rutaImagen=" +rutaImagen+ "]";
 	}
 
 	@Override
