@@ -11,4 +11,5 @@ public interface EventoDao {
 	List<Evento> porEstado(String referenciaEstado);
 	int deleteById(Integer id);
 	Evento insertOne(Evento evento);
+	List<Evento> porEstadoAndDestacado(String referenciaDestacado );
 }

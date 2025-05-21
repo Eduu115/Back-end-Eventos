@@ -60,6 +60,11 @@ public class EventoDaoImpl implements EventoDao{
 		}
 	}
 
+	@Override
+	public List<Evento> porEstadoAndDestacado(String referenciaDestacado) { // Siemore queremos el activo en este metodo
+		return edao.findByEstadoAndDestacado(EstadoEvento.ACTIVO, Destacado.valueOf(referenciaDestacado));
+	}
+
 	
 	
 }
