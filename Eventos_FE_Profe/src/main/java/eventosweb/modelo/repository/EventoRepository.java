@@ -9,8 +9,8 @@ import java.util.List;
 
 
 
-
 public interface EventoRepository extends JpaRepository<Evento, Integer>{
 	List<Evento> findByDestacado(Destacado destacado);
 	List<Evento> findByEstado(EstadoEvento estado);
+	List<Evento> findByEstadoAndDestacado(EstadoEvento estado, Destacado destacado );
 }

@@ -42,6 +42,12 @@ public class EventoRestController {
 	public List<Evento> porEstado(@PathVariable String referenciaEstado){
 		return edao.porEstado(referenciaEstado);
 	}
+	
+	@GetMapping("/activoAndDestacado/{referenciaDestacado}")
+	public List<Evento> porActivoYDestacado(@PathVariable String referenciaDestacado){
+		return edao.porEstadoAndDestacado(referenciaDestacado); //return edao.porActivoYDesta
+	}
+	
 	@DeleteMapping("/eliminar/{idEvento}")
 	public int eliminar(@PathVariable Integer idEvento) {
 		return edao.deleteById(idEvento);
