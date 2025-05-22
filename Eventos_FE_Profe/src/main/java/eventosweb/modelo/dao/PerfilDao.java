@@ -11,6 +11,4 @@ public interface PerfilDao {
 	Perfil insertOne(Perfil perfil);
 	Perfil buscarUno(Integer idPerfil);
 	
-	
-
 }

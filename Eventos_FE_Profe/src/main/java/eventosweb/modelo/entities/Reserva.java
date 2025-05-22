@@ -37,7 +37,7 @@ public class Reserva implements Serializable{
 	private String observaciones;
 	private Integer cantidad;
 	
-	private void Reservas() {
+	public Reserva() {
 		// TODO Auto-generated method stub
 
 	}
