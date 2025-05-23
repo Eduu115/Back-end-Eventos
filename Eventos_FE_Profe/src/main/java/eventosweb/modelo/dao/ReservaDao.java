@@ -7,5 +7,5 @@ import eventosweb.modelo.entities.Reserva;
 public interface ReservaDao  {
 	List<Reserva> todos();
 	Reserva buscarUno(Integer idReserva);
-	
+	Reserva buscarEvento(Integer idEvento);
 }

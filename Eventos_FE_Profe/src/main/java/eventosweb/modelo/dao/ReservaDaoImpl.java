@@ -23,5 +23,10 @@ public class ReservaDaoImpl implements ReservaDao {
 		// TODO Auto-generated method stub
 		return rdao.findById(idReserva).orElse(null);
 	}
+
+	@Override
+	public Reserva buscarEvento(Integer idEvento) {
+		// TODO Auto-generated method stub
+		return rdao.findById(idEvento).orElse(null);	}
 	
 }
