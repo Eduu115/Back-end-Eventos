@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import eventosweb.modelo.dao.ReservaDao;
+import eventosweb.modelo.entities.Evento;
 import eventosweb.modelo.entities.Reserva;
 
 @RestController
@@ -19,13 +20,20 @@ public class ReservaRestController {
 	@Autowired
 	private ReservaDao rdao;
 	
+	
 	@GetMapping("/todos")
 	public List<Reserva> todos(){
 		return rdao.todos();
 	}
 	
-	@GetMapping("/uno/{idPerfil}")
-	public Reserva uno(@PathVariable Integer idPerfil){
-		return rdao.buscarUno(idPerfil);
+	@GetMapping("/uno/{idReserva}")
+	public Reserva uno(@PathVariable Integer idReserva){
+		return rdao.buscarUno(idReserva);
+	}
+	
+	@GetMapping("/evento/{idEvento}")
+	public List<Reserva> reservasPorEvento(@PathVariable Integer idEvento) {
+	    return rdao.reservasPorEvento(idEvento);
 	}
 }
+
