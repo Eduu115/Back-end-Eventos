@@ -11,7 +11,7 @@ import eventosweb.modelo.repository.UsuarioRepository;
 public class UsuarioDaoImpl implements UsuarioDao{
 
 	@Autowired
-	UsuarioRepository urepo;
+	private UsuarioRepository urepo;
 
 	@Override
 	public List<Usuario> findAll() {

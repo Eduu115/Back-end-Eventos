@@ -1,5 +1,6 @@
 package eventosweb.restcontroller;
 
+import java.time.LocalDate;
 import java.util.List; 
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import eventosweb.modelo.dao.PerfilDao;
 import eventosweb.modelo.dao.UsuarioDao;
 import eventosweb.modelo.entities.Usuario;
 
@@ -22,6 +24,9 @@ public class UsuarioRestController {
 
 	@Autowired
 	private UsuarioDao udao;
+	
+	@Autowired
+	private PerfilDao pdao;
 	
 	@GetMapping("/todos")
 	public List<Usuario> todos(){
@@ -39,6 +44,9 @@ public class UsuarioRestController {
 	}
 	@PostMapping("/alta")
 	public Usuario alta(@RequestBody Usuario usuario) {
+		usuario.setEnabled(1);
+		usuario.setFechaRegistro(LocalDate.now());
+		usuario.setPerfil(pdao.buscarUno(2));
 		return udao.insertOne(usuario);
 	}
 }

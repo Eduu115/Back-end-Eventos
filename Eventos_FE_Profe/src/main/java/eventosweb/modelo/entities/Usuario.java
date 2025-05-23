@@ -14,6 +14,7 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
+import jakarta.persistence.Version;
 @Entity
 @Table(name="USUARIOS")
 public class Usuario implements Serializable{
@@ -29,7 +30,10 @@ public class Usuario implements Serializable{
 	private String nombre;
 	private String apellidos;
 	private Integer enabled;
-	
+/*	
+	@Version
+	private int version;
+*/	
 	@Temporal(TemporalType.DATE)
 	@Column(name="FECHA_REGISTRO")
 	LocalDate fechaRegistro;
