@@ -9,4 +9,5 @@ public interface UsuarioDao {
 	Usuario findById(Integer refUsr);
 	int deleteById(Integer refUsr);
 	Usuario insertOne(Usuario usuario);
+	int login(Usuario usuario);
 }
