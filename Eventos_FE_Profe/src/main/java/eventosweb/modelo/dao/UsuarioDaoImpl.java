@@ -59,6 +59,7 @@ public class UsuarioDaoImpl implements UsuarioDao{
 	        if (lista.isEmpty()) {
 	            return 0; // no login
 	        } else {
+	        	System.out.println("Login OK");
 	            return 1; // login ok
 	        }
 	    } catch (Exception e) {
@@ -67,6 +68,11 @@ public class UsuarioDaoImpl implements UsuarioDao{
 	    }
 		
 		
+	}
+
+	@Override
+	public Usuario findByEmail(String email) {
+		return urepo.findByEmail(email);
 	}
 	
 	
