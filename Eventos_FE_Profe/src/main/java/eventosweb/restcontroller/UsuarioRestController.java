@@ -49,4 +49,11 @@ public class UsuarioRestController {
 		usuario.setPerfil(pdao.buscarUno(2));
 		return udao.insertOne(usuario);
 	}
+	
+	@PostMapping("/userLogin")
+	public int postMethodName(@RequestBody Usuario usuario) {
+		return udao.login(usuario);
+	}
+	
+	
 }

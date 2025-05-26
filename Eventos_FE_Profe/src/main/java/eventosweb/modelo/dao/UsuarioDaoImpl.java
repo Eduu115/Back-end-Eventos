@@ -48,6 +48,26 @@ public class UsuarioDaoImpl implements UsuarioDao{
 			return null;
 		}
 	}
+
+	@Override
+	public int login(Usuario usuario) {
+
+//		System.out.println(usuario);
+		
+		try {
+	        List<Usuario> lista = urepo.findByEmailAndPassword(usuario.getEmail(), usuario.getPassword());
+	        if (lista.isEmpty()) {
+	            return 0; // no login
+	        } else {
+	            return 1; // login ok
+	        }
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	        return -1; // error
+	    }
+		
+		
+	}
 	
 	
 	
