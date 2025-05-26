@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import eventosweb.modelo.entities.Destacado;
 import eventosweb.modelo.entities.EstadoEvento;
 import eventosweb.modelo.entities.Evento;
+import eventosweb.modelo.entities.Reserva;
 import eventosweb.modelo.repository.EventoRepository;
 
 @Service
@@ -63,6 +64,36 @@ public class EventoDaoImpl implements EventoDao{
 	@Override
 	public List<Evento> porEstadoAndDestacado(String referenciaDestacado) { // Siemore queremos el activo en este metodo
 		return edao.findByEstadoAndDestacado(EstadoEvento.ACTIVO, Destacado.valueOf(referenciaDestacado));
+	}
+
+	@Override
+	public Evento actualizar(Integer idEvento, Evento nuevoEvento) {
+		// TODO Auto-generated method stub
+				try {
+					System.out.println("===> ACTUALIZANDO EVENTO ID: " + idEvento);
+
+					Evento eventoExistente = edao.findById(idEvento).orElse(null);
+					if (eventoExistente != null) {
+						eventoExistente.setNombre(nuevoEvento.getNombre());
+						eventoExistente.setDescripcion(nuevoEvento.getDescripcion());
+						eventoExistente.setFechaInicio(nuevoEvento.getFechaInicio());
+						eventoExistente.setDuracion(nuevoEvento.getDuracion());
+						eventoExistente.setDireccion(nuevoEvento.getDireccion());
+						eventoExistente.setAforoMaximo(nuevoEvento.getAforoMaximo());
+						eventoExistente.setPrecio(nuevoEvento.getPrecio());
+						eventoExistente.setTipo(nuevoEvento.getTipo());
+						eventoExistente.setFechaAlta(nuevoEvento.getFechaAlta());
+						eventoExistente.setRutaImagen(nuevoEvento.getRutaImagen());
+
+						return edao.save(eventoExistente);
+					} else {
+						return null;
+
+					}
+				} catch (Exception e) {
+					e.printStackTrace();
+					return null;
+				}
 	}
 
 	
