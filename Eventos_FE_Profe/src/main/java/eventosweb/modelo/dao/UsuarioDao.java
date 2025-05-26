@@ -10,4 +10,5 @@ public interface UsuarioDao {
 	int deleteById(Integer refUsr);
 	Usuario insertOne(Usuario usuario);
 	int login(Usuario usuario);
+	Usuario findByEmail(String email);
 }
