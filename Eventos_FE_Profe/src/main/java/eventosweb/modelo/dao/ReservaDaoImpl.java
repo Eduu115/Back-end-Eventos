@@ -13,25 +13,29 @@ import eventosweb.modelo.repository.ReservaRepository;
 @Service
 public class ReservaDaoImpl implements ReservaDao {
 	@Autowired
-	ReservaRepository rdao;
-	
+	ReservaRepository rrepo;
+	@Autowired
+	UsuarioDao udao;
 
 	@Override
 	public List<Reserva> todos() {
 		// TODO Auto-generated method stub
-		return rdao.findAll();
+		return rrepo.findAll();
 	}
 
 	@Override
 	public Reserva buscarUno(Integer idReserva) {
 		// TODO Auto-generated method stub
-		return rdao.findById(idReserva).orElse(null);
+		return rrepo.findById(idReserva).orElse(null);
 	}
 
 	@Override
-	public List<Reserva> reservasPorEvento(Integer idEvento) {
-	    return rdao.findByEventoIdEvento(idEvento);
+	public List<Reserva> reservasPorUsuario(Integer idUsuario) {
+		// TODO Auto-generated method stub
+		return rrepo.findByUsuario(udao.findById(idUsuario));
 	}
+
+
 
 	
 }
