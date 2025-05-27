@@ -32,5 +32,28 @@ public class ReservaDaoImpl implements ReservaDao {
 		// TODO Auto-generated method stub
 		return rrepo.findByUsuario(udao.findById(idUsuario));
 	}
-	
+	@Override
+	public int eliminar(Integer idReserva) {
+		try {
+			if(rrepo.findById(idReserva).orElse(null)==null)
+				return 0; 
+			
+			rrepo.deleteById(idReserva);
+			return 1; 
+
+		} catch (Exception e) {
+			return -1;
+		}
+	}
+
+	@Override
+	public Reserva insertarUno(Reserva reserva) {
+		// TODO Auto-generated method stub
+		try {
+			return rrepo.save(reserva);
+		}catch(Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
 }
