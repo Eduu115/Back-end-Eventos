@@ -13,7 +13,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import eventosweb.modelo.dao.EventoDao;
 import eventosweb.modelo.dao.ReservaDao;
+import eventosweb.modelo.dao.UsuarioDao;
+import eventosweb.modelo.entities.Evento;
 import eventosweb.modelo.entities.Reserva;
 import eventosweb.modelo.entities.ReservaDTO;
 
@@ -23,7 +26,12 @@ import eventosweb.modelo.entities.ReservaDTO;
 public class ReservaRestController {
 	@Autowired
 	private ReservaDao rdao;
-	
+
+    @Autowired
+    private EventoDao edao;
+
+    @Autowired
+    private UsuarioDao udao;
 	
 	@GetMapping("/todos")
 	public List<Reserva> todos(){
@@ -46,22 +54,18 @@ public class ReservaRestController {
 	}
 	
 	@PostMapping("/altaReserva")
-	public Reserva altaReserva(@RequestBody ReservaDTO reservaDTO) {
-		return rdao.insertarUno(reservaDTO.pasarReserva());
-	}
-	@PostMapping("/insertar")
-	public Reserva insertar(@RequestBody Reserva nuevaReserva) {
-	    return rdao.insertar(nuevaReserva);
-	}
-	
-	@PutMapping("/actualizar/{idReserva}")
-	public Reserva actualizar(@PathVariable Integer idReserva, @RequestBody Reserva nuevaReserva) {
-	    return rdao.actualizar(idReserva, nuevaReserva);
-	}
-	
-	@DeleteMapping("/eliminar/{idReserva}")
-	public int eliminar(@PathVariable Integer idReserva) {
-	    return rdao.deleteById(idReserva);
-	}
+  public Reserva altaReserva(@RequestBody ReservaDTO dto) {
+      Reserva reserva = new Reserva();
+
+      reserva.setCantidad(dto.getCantidad());
+      reserva.setObservaciones(dto.getObservaciones());
+      reserva.setPrecioVenta(dto.getPrecioVenta());
+
+      reserva.setEvento(edao.buscarUno(dto.getIdEvento()));
+      reserva.setUsuario(udao.findById(dto.getIdUsuario()));
+
+      return rdao.insertarUno(reserva);
+  }
+
 }
 

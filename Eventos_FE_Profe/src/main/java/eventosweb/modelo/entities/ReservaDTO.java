@@ -3,7 +3,6 @@ package eventosweb.modelo.entities;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import eventosweb.modelo.dao.EventoDao;
-import eventosweb.modelo.dao.ReservaDao;
 import eventosweb.modelo.dao.UsuarioDao;
 
 public class ReservaDTO {
@@ -83,17 +82,6 @@ public class ReservaDTO {
 		this.cantidad = cantidad;
 	}
 	
-	public Reserva pasarReserva() {
-		Reserva reserva = new Reserva();
-		
-		reserva.setCantidad(this.cantidad);
-		reserva.setObservaciones(this.observaciones);
-		reserva.setPrecioVenta(this.precioVenta);
-		
-		reserva.setEvento(edao.buscarUno(this.idEvento));
-		reserva.setUsuario(udao.findById(this.idUsuario));
-		
-		return reserva;
-	}
+	
 	
 }
