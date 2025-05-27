@@ -54,7 +54,7 @@ public class ReservaRestController {
 	}
 	
 	@PostMapping("/altaReserva")
-  public Reserva altaReserva(@RequestBody ReservaDTO dto) {
+	public Reserva altaReserva(@RequestBody ReservaDTO dto) {
       Reserva reserva = new Reserva();
 
       reserva.setCantidad(dto.getCantidad());
