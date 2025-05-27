@@ -12,4 +12,6 @@ import eventosweb.modelo.entities.Usuario;
 
 public interface ReservaRepository extends JpaRepository<Reserva, Integer>{
 	List<Reserva> findByUsuario(Usuario usuario);
+	List<Reserva> findByEvento(Evento evento);
+
 }

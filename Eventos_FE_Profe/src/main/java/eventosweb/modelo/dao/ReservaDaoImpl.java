@@ -15,6 +15,9 @@ public class ReservaDaoImpl implements ReservaDao {
 	@Autowired
 	UsuarioDao udao;
 
+	@Autowired
+	EventoDao edao;
+	
 	@Override
 	public List<Reserva> todos() {
 		// TODO Auto-generated method stub
@@ -66,5 +69,11 @@ public class ReservaDaoImpl implements ReservaDao {
 			e.printStackTrace();
 			return null;
 		}
+	}
+
+	@Override
+	public List<Reserva> reservasPorEvento(Integer idEvento) {
+		// TODO Auto-generated method stub
+		return rrepo.findByEvento(edao.buscarUno(idEvento));
 	}
 }
