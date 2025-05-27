@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 import eventosweb.modelo.dao.PerfilDao;
 import eventosweb.modelo.dao.UsuarioDao;
 import eventosweb.modelo.entities.Usuario;
+import eventosweb.modelo.entities.UsuarioDTO;
 
 @RestController
 @CrossOrigin(origins = "*")
@@ -50,17 +52,17 @@ public class UsuarioRestController {
 		return udao.insertOne(usuario);
 	}
 	
-	@PostMapping("/userLogin")
-	public Usuario login(@RequestBody Usuario usuario) {
-		if (udao.login(usuario) == 1) {
-			System.out.println("Devuleve 1");
-			Usuario usr = udao.findByEmail(usuario.getEmail());
-			usr.setPassword("");
-			return usr; // devuelvo el usuario entero si es correcto para tratarlo en js
-		}else {
-			return null; // no devuelvo nada si el login es incorrecto	
-		}
-	
+	@PutMapping("/actualizar/{idUsuario}")
+	public Usuario actualizar(@PathVariable Integer idUsuario, @RequestBody UsuarioDTO dto) {
+	    Usuario usuario = udao.findById(idUsuario);
+	    if (usuario == null) return null;
+
+	    usuario.setEmail(dto.getEmail());
+	    usuario.setNombre(dto.getNombre());
+	    usuario.setApellidos(dto.getApellidos());
+
+	    return udao.update(usuario);
 	}
+
 	
 }

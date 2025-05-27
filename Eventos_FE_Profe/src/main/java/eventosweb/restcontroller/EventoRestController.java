@@ -14,7 +14,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import eventosweb.modelo.dao.EventoDao;
+import eventosweb.modelo.entities.Destacado;
+import eventosweb.modelo.entities.EstadoEvento;
 import eventosweb.modelo.entities.Evento;
+import eventosweb.modelo.entities.EventoDTO;
 import eventosweb.modelo.entities.Reserva;
 
 @RestController
@@ -60,7 +63,22 @@ public class EventoRestController {
 	}
 	
 	@PutMapping("/actualizar/{idEvento}")
-	public Evento actualizar(@PathVariable Integer idEvento, @RequestBody Evento nuevoEvento) {
-	    return edao.actualizar(idEvento, nuevoEvento);
+	public Evento actualizarEvento(@PathVariable Integer idEvento, @RequestBody EventoDTO dto) {
+	    Evento evento = edao.buscarUno(idEvento);
+	    if (evento == null) return null;
+
+	    evento.setNombre(dto.getNombre());
+	    evento.setDescripcion(dto.getDescripcion());
+	    evento.setFechaInicio(dto.getFechaInicio());
+	    evento.setDuracion(dto.getDuracion());
+	    evento.setDireccion(dto.getDireccion());
+	    evento.setAforoMaximo(dto.getAforoMaximo());
+	    evento.setPrecio(dto.getPrecio());
+	    evento.setEstado(dto.getEstado());          
+	    evento.setDestacado(dto.getDestacado());     
+
+	    return edao.actualizar(evento);
 	}
+
+
 }

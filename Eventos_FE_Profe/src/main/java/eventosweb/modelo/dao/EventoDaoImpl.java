@@ -67,34 +67,18 @@ public class EventoDaoImpl implements EventoDao{
 	}
 
 	@Override
-	public Evento actualizar(Integer idEvento, Evento nuevoEvento) {
+	public Evento actualizar(Evento evento) {
 		// TODO Auto-generated method stub
-				try {
-					System.out.println("===> ACTUALIZANDO EVENTO ID: " + idEvento);
-
-					Evento eventoExistente = edao.findById(idEvento).orElse(null);
-					if (eventoExistente != null) {
-						eventoExistente.setNombre(nuevoEvento.getNombre());
-						eventoExistente.setDescripcion(nuevoEvento.getDescripcion());
-						eventoExistente.setFechaInicio(nuevoEvento.getFechaInicio());
-						eventoExistente.setDuracion(nuevoEvento.getDuracion());
-						eventoExistente.setDireccion(nuevoEvento.getDireccion());
-						eventoExistente.setAforoMaximo(nuevoEvento.getAforoMaximo());
-						eventoExistente.setPrecio(nuevoEvento.getPrecio());
-						eventoExistente.setTipo(nuevoEvento.getTipo());
-						eventoExistente.setFechaAlta(nuevoEvento.getFechaAlta());
-						eventoExistente.setRutaImagen(nuevoEvento.getRutaImagen());
-
-						return edao.save(eventoExistente);
-					} else {
-						return null;
-
-					}
-				} catch (Exception e) {
-					e.printStackTrace();
-					return null;
-				}
+		try {
+			return edao.save(evento);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
 	}
+
+
+	
 
 	
 	
