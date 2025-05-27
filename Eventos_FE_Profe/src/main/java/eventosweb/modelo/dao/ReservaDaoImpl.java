@@ -56,4 +56,15 @@ public class ReservaDaoImpl implements ReservaDao {
 			return null;
 		}
 	}
+
+	@Override
+	public Reserva actualizar(Reserva reserva) {
+		// TODO Auto-generated method stub
+		try {
+			return rrepo.save(reserva);
+		}catch(Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
 }

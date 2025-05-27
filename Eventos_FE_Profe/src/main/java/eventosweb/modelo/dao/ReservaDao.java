@@ -11,4 +11,6 @@ public interface ReservaDao  {
 	List<Reserva> reservasPorUsuario(Integer idUsuario);
 	int eliminar(Integer idReserva);
 	Reserva insertarUno(Reserva reserva);
+    Reserva actualizar(Reserva reserva);
+
 }

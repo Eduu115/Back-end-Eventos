@@ -66,6 +66,21 @@ public class ReservaRestController {
 
       return rdao.insertarUno(reserva);
   }
+	
+	@PutMapping("/actualizar/{idReserva}")
+	public Reserva actualizar(@PathVariable Integer idReserva, @RequestBody ReservaDTO dto) {
+	    Reserva reserva = rdao.buscarUno(idReserva);
+	    if (reserva == null) return null;
+
+	    reserva.setCantidad(dto.getCantidad());
+	    reserva.setObservaciones(dto.getObservaciones());
+	    reserva.setPrecioVenta(dto.getPrecioVenta());
+	    reserva.setEvento(edao.buscarUno(dto.getIdEvento()));
+	    reserva.setUsuario(udao.findById(dto.getIdUsuario()));
+
+	    return rdao.actualizar(reserva);
+	}
+
 
 }
 

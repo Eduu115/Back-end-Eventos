@@ -74,6 +74,17 @@ public class UsuarioDaoImpl implements UsuarioDao{
 	public Usuario findByEmail(String email) {
 		return urepo.findByEmail(email);
 	}
+
+	@Override
+	public Usuario update(Usuario usuario) {
+		// TODO Auto-generated method stub
+		try {
+			return urepo.save(usuario);
+		}catch(Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
 	
 	
 	

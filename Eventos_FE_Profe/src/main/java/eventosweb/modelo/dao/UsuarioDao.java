@@ -11,4 +11,5 @@ public interface UsuarioDao {
 	Usuario insertOne(Usuario usuario);
 	int login(Usuario usuario);
 	Usuario findByEmail(String email);
+	Usuario update(Usuario usuario);
 }
