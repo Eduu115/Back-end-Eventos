@@ -34,9 +34,9 @@ public class ReservaRestController {
 		return rdao.buscarUno(idReserva);
 	}
 	
-	@GetMapping("/evento/{idEvento}")
-	public List<Reserva> reservasPorEvento(@PathVariable Integer idEvento) {
-	    return rdao.reservasPorEvento(idEvento);
+	@GetMapping("/evento/{idUsuario}")
+	public List<Reserva> reservasPorUsuario(@PathVariable Integer idUsuario) {
+	    return rdao.reservasPorUsuario(idUsuario);
 	}
 	
 	@PostMapping("/insertar")
