@@ -1,6 +1,6 @@
 package eventosweb.restcontroller;
 
-import java.util.List;
+import java.util.List; 
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -53,17 +54,18 @@ public class ReservaRestController {
 	}
 	
 	@PostMapping("/altaReserva")
-    public Reserva altaReserva(@RequestBody ReservaDTO dto) {
-        Reserva reserva = new Reserva();
+  public Reserva altaReserva(@RequestBody ReservaDTO dto) {
+      Reserva reserva = new Reserva();
 
-        reserva.setCantidad(dto.getCantidad());
-        reserva.setObservaciones(dto.getObservaciones());
-        reserva.setPrecioVenta(dto.getPrecioVenta());
+      reserva.setCantidad(dto.getCantidad());
+      reserva.setObservaciones(dto.getObservaciones());
+      reserva.setPrecioVenta(dto.getPrecioVenta());
 
-        reserva.setEvento(edao.buscarUno(dto.getIdEvento()));
-        reserva.setUsuario(udao.findById(dto.getIdUsuario()));
+      reserva.setEvento(edao.buscarUno(dto.getIdEvento()));
+      reserva.setUsuario(udao.findById(dto.getIdUsuario()));
 
-        return rdao.insertarUno(reserva);
-    }
+      return rdao.insertarUno(reserva);
+  }
+
 }
 
