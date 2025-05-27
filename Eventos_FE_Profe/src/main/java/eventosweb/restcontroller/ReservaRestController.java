@@ -39,20 +39,6 @@ public class ReservaRestController {
 	    return rdao.reservasPorUsuario(idUsuario);
 	}
 	
-	@PostMapping("/insertar")
-	public Reserva insertar(@RequestBody Reserva nuevaReserva) {
-	    return rdao.insertar(nuevaReserva);
-	}
-	
-	@PutMapping("/actualizar/{idReserva}")
-	public Reserva actualizar(@PathVariable Integer idReserva, @RequestBody Reserva nuevaReserva) {
-	    return rdao.actualizar(idReserva, nuevaReserva);
-	}
-	
-	@DeleteMapping("/eliminar/{idReserva}")
-	public int eliminar(@PathVariable Integer idReserva) {
-	    return rdao.deleteById(idReserva);
-	}
 
 }
 
