@@ -29,8 +29,8 @@ public class EventoRestController {
 	}
 	
 	@GetMapping("/uno/{idEvento}")
-	public Evento uno(@PathVariable Integer idPerfil){
-		return edao.buscarUno(idPerfil);
+	public Evento uno(@PathVariable Integer idEvento){
+		return edao.buscarUno(idEvento);
 	}
 	
 	@GetMapping("/destacado/{referenciaDestacado}")
