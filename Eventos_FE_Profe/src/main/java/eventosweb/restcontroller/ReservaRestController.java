@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import eventosweb.modelo.dao.ReservaDao;
 import eventosweb.modelo.entities.Reserva;
+import eventosweb.modelo.entities.ReservaDTO;
 
 @RestController
 @CrossOrigin(origins = "*")
@@ -34,11 +35,22 @@ public class ReservaRestController {
 		return rdao.buscarUno(idReserva);
 	}
 	
-	@GetMapping("/evento/{idUsuario}")
+	@GetMapping("/usuario/{idUsuario}")
 	public List<Reserva> reservasPorUsuario(@PathVariable Integer idUsuario) {
 	    return rdao.reservasPorUsuario(idUsuario);
 	}
-	
 
+	@DeleteMapping("/eliminar/{idReserva}")
+	public int eliminar(@PathVariable Integer idReserva){
+		return rdao.eliminar(idReserva);
+	}
+	
+	@PostMapping("/altaReserva")
+	public Reserva altaReserva(@RequestBody ReservaDTO reservaDTO) {
+		return rdao.insertarUno(reservaDTO.pasarReserva());
+	}
+
+	
+	
 }
 
