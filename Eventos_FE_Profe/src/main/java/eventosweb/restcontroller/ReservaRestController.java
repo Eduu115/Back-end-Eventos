@@ -19,6 +19,7 @@ import eventosweb.modelo.dao.UsuarioDao;
 import eventosweb.modelo.entities.Evento;
 import eventosweb.modelo.entities.Reserva;
 import eventosweb.modelo.entities.ReservaDTO;
+import eventosweb.modelo.entities.ReservaDTOUpdate;
 
 @RestController
 @CrossOrigin(origins = "*")
@@ -73,15 +74,12 @@ public class ReservaRestController {
   }
 	
 	@PutMapping("/actualizar/{idReserva}")
-	public Reserva actualizar(@PathVariable Integer idReserva, @RequestBody ReservaDTO dto) {
+	public Reserva actualizar(@PathVariable Integer idReserva, @RequestBody ReservaDTOUpdate dto) {
 	    Reserva reserva = rdao.buscarUno(idReserva);
 	    if (reserva == null) return null;
 
 	    reserva.setCantidad(dto.getCantidad());
 	    reserva.setObservaciones(dto.getObservaciones());
-	    reserva.setPrecioVenta(dto.getPrecioVenta());
-	    reserva.setEvento(edao.buscarUno(dto.getIdEvento()));
-	    reserva.setUsuario(udao.findById(dto.getIdUsuario()));
 
 	    return rdao.actualizar(reserva);
 	}
