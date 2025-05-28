@@ -48,6 +48,11 @@ public class ReservaRestController {
 	    return rdao.reservasPorUsuario(idUsuario);
 	}
 	
+	@GetMapping("/evento/{idEvento}")
+	public List<Reserva> reservasPorEvento(@PathVariable Integer idEvento) {
+	    return rdao.reservasPorEvento(idEvento);
+	}
+	
 	@DeleteMapping("/eliminar/{idReserva}")
 	public int eliminar(@PathVariable Integer idReserva){
 		return rdao.eliminar(idReserva);

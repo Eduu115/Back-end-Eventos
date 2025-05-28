@@ -63,6 +63,22 @@ public class UsuarioRestController {
 
 	    return udao.update(usuario);
 	}
+	
+	@PostMapping("/userLogin")
+	public Usuario login(@RequestBody Usuario usuario) {
+		if (udao.login(usuario) == 1) {
+			System.out.println("Devuleve 1");
+			Usuario usr = udao.findByEmail(usuario.getEmail());
+			usr.setPassword("");
+			return usr; // devuelvo el usuario entero si es correcto para tratarlo en js
+
+		}else {
+			return null; // no devuelvo nada si el login es incorrecto	
+		}
+
+	
+
+	}
 
 	
 }
