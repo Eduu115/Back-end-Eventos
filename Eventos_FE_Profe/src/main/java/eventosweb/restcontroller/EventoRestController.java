@@ -59,6 +59,7 @@ public class EventoRestController {
 	}
 	@PostMapping("/crearEvento")
 	public Evento alta(@RequestBody Evento evento) {
+		evento.setRutaImagen("./static/media/img/jeo.jpg");
 		return edao.insertOne(evento);
 	}
 	
